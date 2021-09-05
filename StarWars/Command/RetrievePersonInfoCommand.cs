@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace StarWars.Command
 {
-    public class RetrievePersonInfoCommand : IRetrievePersonInfoCommand 
+    public class RetrievePersonInfoCommand : IRetrievePersonInfoCommand
     {
         private readonly Logger _logger = NLogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
         private readonly IPersonInfoDtoFactory _personInfoDtoFactory;
@@ -33,18 +33,10 @@ namespace StarWars.Command
         {
             _logger.Info($"Retrieveing information about: {_personName}.");
             var personInfo = _personInfoDtoFactory.Create(_personName);
-            //TODO: jesli na froncie bedzie mozliwosc wyboru tylko z istniejacych osób, usunąć poniższego ifa.
-            if (personInfo.Person.Name != null)
-            {
-                var savePath = Path.Combine(_outputPath, $"{DateTime.Now:yyyy-MM-dd_HH_mm_ss}_{_personName.Replace(' ', '_')}.json").ToString();
-                _logger.Info($"Saving result to: {savePath}.");
-                Directory.CreateDirectory(_outputPath);
-                File.WriteAllText(savePath, JsonSerializer.Serialize(personInfo, new JsonSerializerOptions() { WriteIndented = true }));
-            }
-            else
-            {
-                _logger.Info($"{_personName} was not found in  people repository.");
-            }            
+            var savePath = Path.Combine(_outputPath, $"{DateTime.Now:yyyy-MM-dd_HH_mm_ss}_{_personName.Replace(' ', '_')}.json").ToString();
+            _logger.Info($"Saving result to: {savePath}.");
+            Directory.CreateDirectory(_outputPath);
+            File.WriteAllText(savePath, JsonSerializer.Serialize(personInfo, new JsonSerializerOptions() { WriteIndented = true }));
             return personInfo;
         }
     }

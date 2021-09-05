@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import { Route } from 'react-router';
 import { NavMenu } from './components/NavMenu';
+import { HeroDashboard } from './components/HeroDashboard';
 
 export default class App extends Component {
-    static displayName = App.name;
+
+    constructor(props) {
+        super(props);
+      }
 
     render() {
         return (
             <div>
                 <NavMenu title="Star Wars Hero Information" />
-                <Container>
-                    <h2>Hello world!</h2>
+                <Container>                  
+                    <HeroDashboard />
                 </Container>
             </div>
         );

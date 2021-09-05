@@ -1,6 +1,6 @@
 ﻿using StarWars.Contracts.Repositories;
 
-namespace StarWars
+namespace StarWars.Contracts.Repositories
 {
     public interface IStarWarsApiClient
     {

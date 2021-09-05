@@ -1,4 +1,5 @@
 ﻿using StarWars.Contracts.Factory;
+using StarWars.Contracts.Repositories;
 using StarWars.Dto;
 using System;
 using System.Collections.Generic;

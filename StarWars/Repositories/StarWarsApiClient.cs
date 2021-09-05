@@ -2,7 +2,7 @@
 using StarWars.Contracts.Repositories;
 using StarWars.Repositories;
 
-namespace StarWars
+namespace StarWars.Repositories
 {
     public class StarWarsApiClient : IStarWarsApiClient
     {
