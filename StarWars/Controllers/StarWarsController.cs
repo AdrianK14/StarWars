@@ -1,16 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using StarWars.Contracts.Factory;
-using StarWars.Contracts.Repositories;
-using StarWars.Extensions;
-using StarWars.Factory;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace StarWars.Controllers
 {

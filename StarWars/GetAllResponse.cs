@@ -1,10 +1,6 @@
-﻿using Newtonsoft.Json;
-using StarWars.Entities;
-using System;
+﻿using StarWars.Entities;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace StarWars
 {

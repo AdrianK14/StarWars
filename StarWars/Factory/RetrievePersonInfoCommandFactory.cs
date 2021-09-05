@@ -1,12 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using StarWars.Command;
 using StarWars.Contracts.Factory;
 using StarWars.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StarWars.Factory
 {

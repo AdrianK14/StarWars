@@ -2,16 +2,12 @@
 using StarWars.Attributes;
 using StarWars.Entities;
 using StarWars.Extensions;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Security.Policy;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace StarWars.Repositories
 {
@@ -66,7 +62,7 @@ namespace StarWars.Repositories
         }
 
         protected virtual List<TEntity> GetAll()
-        { 
+        {
             return JsonSerializer.Deserialize<GetAllResponse<TEntity>>(SendRequest(_apiUrl.CombineUrl(_apiResource), HttpMethod.Get)).Results;
         }
     }

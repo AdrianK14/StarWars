@@ -1,17 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using NLog;
+﻿using NLog;
 using NLog.Web;
 using StarWars.Contracts.Command;
 using StarWars.Contracts.Dto;
 using StarWars.Contracts.Factory;
-using StarWars.Dto;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace StarWars.Command
 {

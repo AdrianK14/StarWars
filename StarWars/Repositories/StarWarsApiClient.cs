@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using StarWars.Contracts.Repositories;
-using StarWars.Repositories;
 
 namespace StarWars.Repositories
 {
