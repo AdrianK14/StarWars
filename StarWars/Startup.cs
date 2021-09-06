@@ -6,9 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.Repositories;
+using StarWars.Factories;
 using StarWars.Factory;
 using StarWars.Repositories;
 
+//TODO: namespacy
 namespace StarWars
 {
     public class Startup
@@ -24,6 +26,8 @@ namespace StarWars
         {
             services.AddTransient<IStarWarsApiClient, StarWarsApiClient>();
             services.AddTransient<IPersonInfoDtoFactory, PersonInfoDtoFactory>();
+            services.AddTransient<IWebClientFactory, WebClientFactory>();
+            services.AddTransient<ISendRequestCommandFactory, SendRequestCommandFactory>();
             services.AddTransient<IRetrievePersonInfoCommandFactory, RetrievePersonInfoCommandFactory>();
 
             services.AddControllersWithViews();

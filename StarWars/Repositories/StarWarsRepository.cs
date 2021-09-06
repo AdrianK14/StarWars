@@ -28,11 +28,11 @@ namespace StarWars.Repositories
             _apiResource = entityResourceAttribute.Name;
         }
 
-        protected string SendRequest(string url, HttpMethod httpMethod)
+        protected string SendRequest(string url)
         {
             string response;
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpWebRequest.Method = httpMethod.ToString();
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.Method = HttpMethod.Get.ToString();
 
             if (!string.IsNullOrWhiteSpace(_proxyUrl))
             {
@@ -42,8 +42,8 @@ namespace StarWars.Repositories
                 };
             }
 
-            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (StreamReader reader = new StreamReader(httpWebResponse.GetResponseStream()))
+            var httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var reader = new StreamReader(httpWebResponse.GetResponseStream()))
             {
                 response = reader.ReadToEnd();
             }
@@ -53,17 +53,17 @@ namespace StarWars.Repositories
 
         protected virtual TEntity GetById(int p_id)
         {
-            return JsonSerializer.Deserialize<TEntity>(SendRequest(_apiUrl.CombineUrl(_apiResource).CombineUrl(p_id.ToString()), HttpMethod.Get));
+            return JsonSerializer.Deserialize<TEntity>(SendRequest(_apiUrl.CombineUrl(_apiResource).CombineUrl(p_id.ToString())));
         }
 
         protected virtual TEntity GetByUrl(string url)
         {
-            return JsonSerializer.Deserialize<TEntity>(SendRequest(url, HttpMethod.Get));
+            return JsonSerializer.Deserialize<TEntity>(SendRequest(url));
         }
 
         protected virtual List<TEntity> GetAll()
         {
-            return JsonSerializer.Deserialize<GetAllResponse<TEntity>>(SendRequest(_apiUrl.CombineUrl(_apiResource), HttpMethod.Get)).Results;
+            return JsonSerializer.Deserialize<GetAllResponse<TEntity>>(SendRequest(_apiUrl.CombineUrl(_apiResource))).Results;
         }
     }
 }
