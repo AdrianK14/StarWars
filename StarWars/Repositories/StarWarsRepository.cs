@@ -30,7 +30,7 @@ namespace StarWars.Repositories
 
         protected string SendRequest(string url, HttpMethod httpMethod)
         {
-            string result = string.Empty;
+            string response;
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.Method = httpMethod.ToString();
 
@@ -45,10 +45,10 @@ namespace StarWars.Repositories
             HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using (StreamReader reader = new StreamReader(httpWebResponse.GetResponseStream()))
             {
-                result = reader.ReadToEnd();
+                response = reader.ReadToEnd();
             }
 
-            return result;
+            return response;
         }
 
         protected virtual TEntity GetById(int p_id)

@@ -18,7 +18,7 @@ namespace StarWars.Factory
         public IPersonInfoDto Create(string personName)
         {
             var personInfoDto = new PersonInfoDto();
-            var person = _starWarsApiClient.People.GetAll().Where(x => x.Name == personName).FirstOrDefault();
+            var person = _starWarsApiClient.People.GetAll().FirstOrDefault(x => x.Name == personName);
 
             if (person != null)
             {
