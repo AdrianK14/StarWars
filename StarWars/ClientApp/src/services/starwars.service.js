@@ -1,11 +1,11 @@
-import config from "../configuration.json";
+import config from "../config.json";
 
 export const starWarsService = {
     fetchHeroInfo,
 };
 
 async function fetchHeroInfo(heroName) {
-    return await sendRequest(`person/${heroName}`, { method: "GET" });
+    return await sendRequest(`heroes/${heroName}`, { method: "GET" });
 }
 
 async function sendRequest(url, options) {

@@ -17,8 +17,13 @@ namespace StarWars.Controllers
             _retrievePersonInfoCommandFactory = retrievePersonInfoCommandFactory;
         }
 
+        /// <summary>
+        /// Zwraca informację o filmach, statkach i pojazdach związanych z wybranym bohaterem
+        /// </summary>
+        /// <param name="personName">Pełna nazwa bohatera</param>
+        /// <returns>Zdeserializowany do json'a obiekt PersonInfoDto</returns>
         [HttpGet]
-        [Route("person/{personName}")]
+        [Route("heroes/{personName}")]
         public IActionResult GetPersonInfo(string personName)
         {
             try

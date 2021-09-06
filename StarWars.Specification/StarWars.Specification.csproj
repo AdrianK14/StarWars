@@ -17,12 +17,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Command\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\StarWars\StarWars.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Mocks\Responses\film.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Mocks\Responses\people.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Mocks\Responses\person.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Mocks\Responses\starship.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Mocks\Responses\vehicle.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

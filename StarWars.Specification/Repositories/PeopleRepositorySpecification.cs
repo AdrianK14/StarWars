@@ -16,7 +16,7 @@ namespace StarWars.Specification.Repositories
         [Test]
         public void Should_find_person_by_id()
         {
-            var config = Any.Instance<IConfiguration>();
+           
         }
     }
 }

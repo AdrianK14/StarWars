@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace StarWars
+namespace StarWars.SwApiClient
 {
     public class GetAllResponse<TEntity> where TEntity : StarWarsEntity
     {

@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StarWars.Contracts;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.Repositories;
-using StarWars.Factories;
+using StarWars.Contracts.SwApiClient;
 using StarWars.Factory;
 using StarWars.Repositories;
+using StarWars.SwApiClient;
 
-//TODO: namespacy
 namespace StarWars
 {
     public class Startup
@@ -26,8 +27,7 @@ namespace StarWars
         {
             services.AddTransient<IStarWarsApiClient, StarWarsApiClient>();
             services.AddTransient<IPersonInfoDtoFactory, PersonInfoDtoFactory>();
-            services.AddTransient<IWebClientFactory, WebClientFactory>();
-            services.AddTransient<ISendRequestCommandFactory, SendRequestCommandFactory>();
+            services.AddTransient<IWebClient, WebClient>();
             services.AddTransient<IRetrievePersonInfoCommandFactory, RetrievePersonInfoCommandFactory>();
 
             services.AddControllersWithViews();

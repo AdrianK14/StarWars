@@ -1,6 +1,6 @@
 ﻿using StarWars.Contracts.Dto;
 using StarWars.Contracts.Factory;
-using StarWars.Contracts.Repositories;
+using StarWars.Contracts.SwApiClient;
 using StarWars.Dto;
 using System.Linq;
 
