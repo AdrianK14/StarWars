@@ -2,19 +2,19 @@ import React from "react";
 import { Table as BootstrapTable } from "reactstrap";
 
 export function Table(props) {
-    return (
+    return props.data.length > 0 && props.headers.length > 0 ?
         <>
-            <h3>{props.title}</h3>
-            <BootstrapTable striped bordered hover>
+            <h4>{props.title}</h4>
+            <BootstrapTable striped bordered hover size="sm">
                 <thead>
                     <tr>
                         {props.headers.map((header) => {
-                            return <th>{header}</th>;
+                            return <th>{header.split('_').join(' ').toUpperCase()}</th>;
                         })}
                     </tr>
                 </thead>
                 <tbody>
-                    {props.data.map((element, index) => {
+                    {props.data.map((element) => {
                         let cells = [];
                         for (
                             let propIdx = 0;
@@ -29,6 +29,5 @@ export function Table(props) {
                     })}
                 </tbody>
             </BootstrapTable>
-        </>
-    );
+        </> : null;
 }

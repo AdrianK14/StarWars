@@ -4,12 +4,12 @@ export const starWarsService = {
     fetchHeroInfo,
 };
 
-function fetchHeroInfo(heroName) {
-    return sendRequest(`person/${heroName}`, { method: "GET" });
+async function fetchHeroInfo(heroName) {
+    return await sendRequest(`person/${heroName}`, { method: "GET" });
 }
 
-function sendRequest(url, options) {
-    var response = fetch(`${config.SERVER_URL}${url}`, options);
+async function sendRequest(url, options) {
+    var response = await fetch(`${config.SERVER_URL}${url}`, options);
     if (response.ok) {
         return response.json();
     }

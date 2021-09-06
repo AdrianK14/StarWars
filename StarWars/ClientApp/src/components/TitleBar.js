@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { Container, Navbar, NavbarBrand } from "reactstrap";
-import "./NavMenu.css";
+import "./TitleBar.css";
 
-export class NavMenu extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+export class TitleBar extends Component {
     render() {
         return (
             <header>

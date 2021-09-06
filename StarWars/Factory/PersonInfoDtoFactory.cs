@@ -1,4 +1,5 @@
-﻿using StarWars.Contracts.Factory;
+﻿using StarWars.Contracts.Dto;
+using StarWars.Contracts.Factory;
 using StarWars.Contracts.Repositories;
 using StarWars.Dto;
 using System.Linq;
@@ -14,14 +15,13 @@ namespace StarWars.Factory
             _starWarsApiClient = starWarsApiClient;
         }
 
-        public PersonInfoDto Create(string personName)
+        public IPersonInfoDto Create(string personName)
         {
             var personInfoDto = new PersonInfoDto();
             var person = _starWarsApiClient.People.GetAll().Where(x => x.Name == personName).FirstOrDefault();
 
             if (person != null)
             {
-                personInfoDto.Person = person;
                 foreach (var filmUrl in person.Films)
                 {
                     personInfoDto.Films.Add(_starWarsApiClient.Films.GetByUrl(filmUrl));
