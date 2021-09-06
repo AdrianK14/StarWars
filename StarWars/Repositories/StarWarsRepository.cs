@@ -25,17 +25,17 @@ namespace StarWars.Repositories
             _webClient = webClient;
         }
 
-        protected virtual TEntity GetById(int p_id)
+        protected virtual TEntity GetEntityById(int p_id)
         {
             return JsonSerializer.Deserialize<TEntity>(_webClient.SendRequest(_apiUrl.CombineUrl(_apiResource).CombineUrl(p_id.ToString())));
         }
 
-        protected virtual TEntity GetByUrl(string url)
+        protected virtual TEntity GetEntityByUrl(string url)
         {
             return JsonSerializer.Deserialize<TEntity>(_webClient.SendRequest(url));
         }
 
-        protected virtual List<TEntity> GetAll()
+        protected virtual List<TEntity> GetAllEntities()
         {
             return JsonSerializer.Deserialize<GetAllResponse<TEntity>>(_webClient.SendRequest(_apiUrl.CombineUrl(_apiResource))).Results;
         }

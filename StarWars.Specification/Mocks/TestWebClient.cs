@@ -9,7 +9,7 @@ namespace StarWars.Specification.Mocks
     {
         public Dictionary<string, string> _responses = new Dictionary<string, string>()
         {
-            { "/people", "people.json"},
+            { "/people/", "people.json"},
             { "/people/1/", "person.json"},
             { "/films/1/", "film.json"},
             { "/films/2/", "film.json"},

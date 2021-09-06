@@ -10,19 +10,19 @@ namespace StarWars.Repositories
     {
         public VehiclesRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
 
-        List<Vehicle> IRepository<Vehicle>.GetAll()
+        public List<Vehicle> GetAll()
         {
-            return base.GetAll();
+            return GetAllEntities();
         }
 
-        Vehicle IRepository<Vehicle>.GetById(int id)
+        public Vehicle GetById(int id)
         {
-            return base.GetById(id);
+            return GetEntityById(id);
         }
 
-        Vehicle IRepository<Vehicle>.GetByUrl(string url)
+        public Vehicle GetByUrl(string url)
         {
-            return base.GetByUrl(url);
+            return GetEntityByUrl(url);
         }
     }
 }

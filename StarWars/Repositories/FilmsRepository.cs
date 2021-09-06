@@ -10,20 +10,19 @@ namespace StarWars.Repositories
     {
         public FilmsRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
 
-        List<Film> IRepository<Film>.GetAll()
+        public List<Film> GetAll()
         {
-            return base.GetAll();
+            return GetAllEntities();
         }
 
-        Film IRepository<Film>.GetById(int id)
+        public Film GetById(int id)
         {
-            return base.GetById(id);
+            return GetEntityById(id);
         }
 
-        Film IRepository<Film>.GetByUrl(string url)
+        public Film GetByUrl(string url)
         {
-            return base.GetByUrl(url);
+            return GetEntityByUrl(url);
         }
-
     }
 }

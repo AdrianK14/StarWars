@@ -10,19 +10,19 @@ namespace StarWars.Repositories
     {
         public PeopleRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
 
-        List<Person> IRepository<Person>.GetAll()
+        public List<Person> GetAll()
         {
-            return base.GetAll();
+            return GetAllEntities();
         }
 
-        Person IRepository<Person>.GetById(int id)
+        public Person GetById(int id)
         {
-            return base.GetById(id);
+            return GetEntityById(id);
         }
 
-        Person IRepository<Person>.GetByUrl(string url)
+        public Person GetByUrl(string url)
         {
-            return base.GetByUrl(url);
+            return GetEntityByUrl(url);
         }
     }
 }

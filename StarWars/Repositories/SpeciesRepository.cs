@@ -10,19 +10,19 @@ namespace StarWars.Repositories
     {
         public SpeciesRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
 
-        List<Species> IRepository<Species>.GetAll()
+        public List<Species> GetAll()
         {
-            return base.GetAll();
+            return GetAllEntities();
         }
 
-        Species IRepository<Species>.GetById(int id)
+        public Species GetById(int id)
         {
-            return base.GetById(id);
+            return GetEntityById(id);
         }
 
-        Species IRepository<Species>.GetByUrl(string url)
+        public Species GetByUrl(string url)
         {
-            return base.GetByUrl(url);
+            return GetEntityByUrl(url);
         }
     }
 }

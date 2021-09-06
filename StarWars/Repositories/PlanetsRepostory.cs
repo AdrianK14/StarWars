@@ -9,19 +9,20 @@ namespace StarWars.Repositories
     public class PlanetsRepository : StarWarsRepository<Planet>, IPlanetsRepository
     {
         public PlanetsRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
-        List<Planet> IRepository<Planet>.GetAll()
+
+        public List<Planet> GetAll()
         {
-            return base.GetAll();
+            return GetAllEntities();
         }
 
-        Planet IRepository<Planet>.GetById(int id)
+        public Planet GetById(int id)
         {
-            return base.GetById(id);
+            return GetEntityById(id);
         }
 
-        Planet IRepository<Planet>.GetByUrl(string url)
+        public Planet GetByUrl(string url)
         {
-            return base.GetByUrl(url);
+            return GetEntityByUrl(url);
         }
     }
 }

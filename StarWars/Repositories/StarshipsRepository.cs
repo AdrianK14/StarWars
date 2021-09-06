@@ -10,19 +10,19 @@ namespace StarWars.Repositories
     {
         public StarshipsRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
 
-        List<Starship> IRepository<Starship>.GetAll()
+        public List<Starship> GetAll()
         {
-            return base.GetAll();
+            return GetAllEntities();
         }
 
-        Starship IRepository<Starship>.GetById(int id)
+        public Starship GetById(int id)
         {
-            return base.GetById(id);
+            return GetEntityById(id);
         }
 
-        Starship IRepository<Starship>.GetByUrl(string url)
+        public Starship GetByUrl(string url)
         {
-            return base.GetByUrl(url);
+            return GetEntityByUrl(url);
         }
     }
 }
