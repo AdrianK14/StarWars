@@ -1,13 +1,13 @@
 ﻿using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Factory;
 using StarWars.SwApiClient;
 using static TddXt.AnyRoot.Root;
-
 
 namespace StarWars.Specification
 {
@@ -19,11 +19,13 @@ namespace StarWars.Specification
             //Arrange
             IServiceCollection services = new ServiceCollection();
             var configuration = Any.Instance<IConfiguration>();
+            var logger = Any.Instance<ILogger<PersonInfoDtoFactory>>();
             var target = new Startup(configuration);
-
-
+     
             //Act
             target.ConfigureServices(services);
+
+            services.AddSingleton(logger);
             services.AddSingleton(configuration);
             services.AddTransient<IStarWarsApiClient, StarWarsApiClient>();
             services.AddTransient<IPersonInfoDtoFactory, PersonInfoDtoFactory>();
@@ -36,7 +38,6 @@ namespace StarWars.Specification
             serviceProvider.GetService<IPersonInfoDtoFactory>().Should().NotBeNull().And.BeOfType(typeof(PersonInfoDtoFactory));
             serviceProvider.GetService<IWebClient>().Should().NotBeNull().And.BeOfType(typeof(WebClient));
             serviceProvider.GetService<IRetrievePersonInfoCommandFactory>().Should().NotBeNull().And.BeOfType(typeof(RetrievePersonInfoCommandFactory));
-
         }
     }
 }

@@ -60,7 +60,7 @@ namespace StarWars.Specification.Controllers
             var logger = Any.Instance<ILogger<StarWarsController>>();
             var webClient = new WebClient(configuration);
             var apiClient = new StarWarsApiClient(configuration, webClient);
-            var personInfoDtoFactory = new PersonInfoDtoFactory(apiClient);
+            var personInfoDtoFactory = new PersonInfoDtoFactory(Any.Instance<ILogger<PersonInfoDtoFactory>>(), apiClient);
             var retrievePersonInfoCommandFactory = new RetrievePersonInfoCommandFactory(configuration, personInfoDtoFactory);
             var controller = new StarWarsController(logger, retrievePersonInfoCommandFactory);
 

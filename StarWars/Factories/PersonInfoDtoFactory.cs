@@ -1,22 +1,28 @@
-﻿using StarWars.Contracts.Dto;
+﻿using Microsoft.Extensions.Logging;
+using StarWars.Contracts.Dto;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Dto;
+using System.Diagnostics;
 using System.Linq;
 
 namespace StarWars.Factory
 {
     public class PersonInfoDtoFactory : IPersonInfoDtoFactory
     {
+        private readonly ILogger<PersonInfoDtoFactory> _logger;
         private readonly IStarWarsApiClient _starWarsApiClient;
 
-        public PersonInfoDtoFactory(IStarWarsApiClient starWarsApiClient)
+        public PersonInfoDtoFactory(ILogger<PersonInfoDtoFactory> logger, IStarWarsApiClient starWarsApiClient)
         {
+            _logger = logger;
             _starWarsApiClient = starWarsApiClient;
         }
 
         public IPersonInfoDto Create(string personName)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             var personInfoDto = new PersonInfoDto();
             var person = _starWarsApiClient.People.GetAll().FirstOrDefault(x => x.Name == personName);
 
@@ -37,6 +43,8 @@ namespace StarWars.Factory
                     personInfoDto.Starships.Add(_starWarsApiClient.Starships.GetByUrl(starshipUrl));
                 }
             }
+            sw.Stop();
+            _logger.LogInformation($"Total swapi.dev communication time: {sw.ElapsedMilliseconds}ms");
             return personInfoDto;
         }
     }

@@ -2,6 +2,7 @@ import React from "react";
 import { Table as BootstrapTable } from "reactstrap";
 
 export function Table(props) {
+
     return props.data.length > 0 && props.headers.length > 0 ?
         <>
             <h4>{props.title}</h4>

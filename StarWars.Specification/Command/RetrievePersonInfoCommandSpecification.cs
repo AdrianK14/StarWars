@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using StarWars.Command;
 using StarWars.Dto;
@@ -42,7 +43,7 @@ namespace StarWars.Specification.Command
             var testWebClient = new TestWebClient();
             var configuration = Any.Instance<IConfiguration>();
             var apiClient = new StarWarsApiClient(configuration, testWebClient);
-            var personInfoDtoFactory = new PersonInfoDtoFactory(apiClient);
+            var personInfoDtoFactory = new PersonInfoDtoFactory(Any.Instance<ILogger<PersonInfoDtoFactory>>(), apiClient);
             var retrieveInfoCommand = new RetrievePersonInfoCommand(personInfoDtoFactory, "Luke Skywalker", "results");
 
             //Act
@@ -52,8 +53,8 @@ namespace StarWars.Specification.Command
             dto.Should().NotBeNull();
             dto.Should().BeOfType(typeof(PersonInfoDto));
             dto.Films.Count.Should().Be(4);
-            dto.Vehicles.Count.Should().Be(2);
-            dto.Starships.Count.Should().Be(2);
+            dto.Vehicles.Count.Should().Be(1);
+            dto.Starships.Count.Should().Be(1);
         }
 
         [Test]
@@ -63,7 +64,7 @@ namespace StarWars.Specification.Command
             var testWebClient = new TestWebClient();
             var configuration = Any.Instance<IConfiguration>();
             var apiClient = new StarWarsApiClient(configuration, testWebClient);
-            var personInfoDtoFactory = new PersonInfoDtoFactory(apiClient);
+            var personInfoDtoFactory = new PersonInfoDtoFactory(Any.Instance<ILogger<PersonInfoDtoFactory>>(), apiClient);
             var retrieveInfoCommand = new RetrievePersonInfoCommand(personInfoDtoFactory, "Luke Skywalker", "results");
 
             //Act

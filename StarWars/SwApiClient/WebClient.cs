@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using StarWars.Contracts;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Extensions;
 
@@ -20,7 +15,6 @@ namespace StarWars.SwApiClient
         {
             _configuration = configuration;
         }
-
 
         public string SendRequest(string url)
         {

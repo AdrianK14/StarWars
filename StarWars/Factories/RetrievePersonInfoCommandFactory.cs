@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using StarWars.Command;
+using StarWars.Contracts.Command;
 using StarWars.Contracts.Factory;
 using StarWars.Extensions;
 
@@ -16,7 +17,7 @@ namespace StarWars.Factory
             _personInfoDtoFactory = personInfoDtoFactory;
         }
 
-        public RetrievePersonInfoCommand Create(string personName)
+        public IRetrievePersonInfoCommand Create(string personName)
         {
             return new RetrievePersonInfoCommand(_personInfoDtoFactory, personName, _configuration.GetOutputPath());
         }

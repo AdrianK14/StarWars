@@ -4,12 +4,9 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StarWars.Contracts;
 using StarWars.Contracts.Factory;
-using StarWars.Contracts.Repositories;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Factory;
-using StarWars.Repositories;
 using StarWars.SwApiClient;
 
 namespace StarWars

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using StarWars.Contracts.Repositories;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Repositories;

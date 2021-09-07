@@ -1,9 +1,9 @@
-﻿using StarWars.Command;
+﻿using StarWars.Contracts.Command;
 
 namespace StarWars.Contracts.Factory
 {
     public interface IRetrievePersonInfoCommandFactory
     {
-        RetrievePersonInfoCommand Create(string personName);
+        IRetrievePersonInfoCommand Create(string personName);
     }
 }
