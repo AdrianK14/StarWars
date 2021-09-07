@@ -7,6 +7,7 @@ export function HeroDashboard(props) {
     const [heroInfo, setHeroInfo] = useState(null);
 
     useEffect(() => {
+        setHeroInfo(null);
         starWarsService.fetchHeroInfo(props.hero).then((data) => {
             setHeroInfo(data);
         });
