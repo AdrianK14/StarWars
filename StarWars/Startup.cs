@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.Repositories;
 using StarWars.Contracts.SwApiClient;
-using StarWars.Factory;
+using StarWars.Factories;
 using StarWars.Repositories;
 using StarWars.SwApiClient;
 

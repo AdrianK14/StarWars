@@ -30,19 +30,19 @@ namespace StarWars.Repositories
 
         protected virtual TEntity GetEntityById(int id)
         {
-            _logger.LogInformation($"Sending request to StarWarsAPI | ({_apiResource}) | get by id: {id}");
+            _logger.LogInformation($"Sending request to StarWarsAPI | {_apiResource} | get by id: {id}");
             return JsonSerializer.Deserialize<TEntity>(_webClient.SendRequest(_apiUrl.CombineUrl(_apiResource).CombineUrl(id.ToString())));
         }
 
         protected virtual TEntity GetEntityByUrl(string url)
         {
-            _logger.LogInformation($"Sending request to StarWarsAPI | ({_apiResource}) | get by url: {url}");
+            _logger.LogInformation($"Sending request to StarWarsAPI | {_apiResource} | get by url: {url}");
             return JsonSerializer.Deserialize<TEntity>(_webClient.SendRequest(url));
         }
 
         protected virtual List<TEntity> GetAllEntities()
         {
-            _logger.LogInformation($"Sending request to StarWarsAPI | ({_apiResource}) | get all");
+            _logger.LogInformation($"Sending request to StarWarsAPI | {_apiResource} | get all");
             return JsonSerializer.Deserialize<GetAllResponse<TEntity>>(_webClient.SendRequest(_apiUrl.CombineUrl(_apiResource))).Results;
         }
     }

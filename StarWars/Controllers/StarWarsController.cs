@@ -21,7 +21,7 @@ namespace StarWars.Controllers
         /// Zwraca informację o filmach, statkach i pojazdach związanych z wybranym bohaterem
         /// </summary>
         /// <param name="personName">Pełna nazwa bohatera</param>
-        /// <returns>Zdeserializowany do json'a obiekt PersonInfoDto</returns>
+        /// <returns>Zserializowany do json'a obiekt PersonInfoDto</returns>
         [HttpGet]
         [Route("heroes/{personName}")]
         public IActionResult GetPersonInfo(string personName)

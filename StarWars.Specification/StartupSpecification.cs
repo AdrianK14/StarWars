@@ -6,7 +6,7 @@ using NUnit.Framework;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Entities;
-using StarWars.Factory;
+using StarWars.Factories;
 using StarWars.SwApiClient;
 using static TddXt.AnyRoot.Root;
 
@@ -25,7 +25,6 @@ namespace StarWars.Specification
      
             //Act
             target.ConfigureServices(services);
-
             services.AddSingleton(logger);
             services.AddSingleton(configuration);
             services.AddSingleton(Any.Instance<ILogger<Person>>());

@@ -1,5 +1,4 @@
-﻿using StarWars.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using StarWars.Dto;
 
 namespace StarWars.Contracts.Dto

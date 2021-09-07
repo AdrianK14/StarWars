@@ -6,7 +6,7 @@ using StarWars.Dto;
 using System.Diagnostics;
 using System.Linq;
 
-namespace StarWars.Factory
+namespace StarWars.Factories
 {
     public class PersonInfoDtoFactory : IPersonInfoDtoFactory
     {
@@ -21,9 +21,10 @@ namespace StarWars.Factory
 
         public IPersonInfoDto Create(string personName)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            var stopWatch = new Stopwatch();
             var personInfoDto = new PersonInfoDto();
+
+            stopWatch.Start();
             var person = _starWarsApiClient.People.GetAll().FirstOrDefault(x => x.Name == personName);
 
             if (person != null)
@@ -43,8 +44,8 @@ namespace StarWars.Factory
                     personInfoDto.Starships.Add(_starWarsApiClient.Starships.GetByUrl(starshipUrl).ToDto());
                 }
             }
-            sw.Stop();
-            _logger.LogInformation($"Total swapi.dev communication time: {sw.ElapsedMilliseconds}ms");
+            stopWatch.Stop();
+            _logger.LogInformation($"Total swapi.dev communication time: {stopWatch.ElapsedMilliseconds}ms");
             return personInfoDto;
         }
     }

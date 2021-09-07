@@ -15,7 +15,7 @@ namespace StarWars
             var logger = NLogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
             try
             {
-                logger.Info("Creating host builder and starting application...");
+                logger.Info("Creating host builder and starting application.");
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)

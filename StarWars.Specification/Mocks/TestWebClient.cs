@@ -7,7 +7,7 @@ namespace StarWars.Specification.Mocks
 {
     public class TestWebClient : IWebClient
     {
-        public Dictionary<string, string> _responses = new Dictionary<string, string>()
+        private readonly Dictionary<string, string> _responses = new Dictionary<string, string>()
         {
             { "/people/", "people.json"},
             { "/people/1/", "person.json"},

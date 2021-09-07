@@ -7,7 +7,7 @@ using NUnit.Framework;
 using StarWars.Contracts.Factory;
 using StarWars.Controllers;
 using StarWars.Entities;
-using StarWars.Factory;
+using StarWars.Factories;
 using StarWars.Repositories;
 using StarWars.SwApiClient;
 using TddXt.AnyRoot.Strings;

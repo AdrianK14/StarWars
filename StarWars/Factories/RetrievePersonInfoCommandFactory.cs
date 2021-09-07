@@ -4,7 +4,7 @@ using StarWars.Contracts.Command;
 using StarWars.Contracts.Factory;
 using StarWars.Extensions;
 
-namespace StarWars.Factory
+namespace StarWars.Factories
 {
     public class RetrievePersonInfoCommandFactory : IRetrievePersonInfoCommandFactory
     {

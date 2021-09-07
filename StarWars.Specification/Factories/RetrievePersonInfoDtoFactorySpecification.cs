@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using StarWars.Command;
 using StarWars.Contracts.Factory;
-using StarWars.Factory;
+using StarWars.Factories;
 using TddXt.AnyRoot.Strings;
 using static TddXt.AnyRoot.Root;
 

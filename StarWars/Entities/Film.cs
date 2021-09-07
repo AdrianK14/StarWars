@@ -1,7 +1,6 @@
 ﻿using StarWars.Attributes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using StarWars.Contracts.Dto;
 using StarWars.Dto;
 
 namespace StarWars.Entities

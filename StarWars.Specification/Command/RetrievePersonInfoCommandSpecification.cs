@@ -4,12 +4,12 @@ using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using StarWars.Command;
 using StarWars.Dto;
-using StarWars.Factory;
 using StarWars.Specification.Mocks;
 using StarWars.SwApiClient;
 using System.IO;
 using System.Text.Json;
 using StarWars.Entities;
+using StarWars.Factories;
 using StarWars.Repositories;
 using static TddXt.AnyRoot.Root;
 
