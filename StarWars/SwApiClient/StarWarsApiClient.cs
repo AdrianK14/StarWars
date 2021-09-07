@@ -9,8 +9,6 @@ namespace StarWars.SwApiClient
     {
         public IFilmsRepository Films { get; }
         public IPeopleRepository People { get; }
-        public IPlanetsRepository Planets { get; }
-        public ISpeciesRepository Species { get; }
         public IStarshipsRepository Starships { get; }
         public IVehiclesRepository Vehicles { get; }
 
@@ -18,8 +16,6 @@ namespace StarWars.SwApiClient
         {
             Films = new FilmsRepository(configuration, webClient);
             People = new PeopleRepository(configuration, webClient);
-            Planets = new PlanetsRepository(configuration, webClient);
-            Species = new SpeciesRepository(configuration, webClient);
             Starships = new StarshipsRepository(configuration, webClient);
             Vehicles = new VehiclesRepository(configuration, webClient);
         }

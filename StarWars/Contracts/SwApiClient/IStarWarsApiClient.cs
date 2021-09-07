@@ -6,8 +6,6 @@ namespace StarWars.Contracts.SwApiClient
     {
         IFilmsRepository Films { get; }
         IPeopleRepository People { get; }
-        IPlanetsRepository Planets { get; }
-        ISpeciesRepository Species { get; }
         IStarshipsRepository Starships { get; }
         IVehiclesRepository Vehicles { get; }
     }

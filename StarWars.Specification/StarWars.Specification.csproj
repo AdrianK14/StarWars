@@ -17,17 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Factories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\StarWars\StarWars.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Mocks\Responses\film.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Mocks\Responses\films.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Mocks\Responses\people.json">
@@ -39,7 +36,13 @@
     <None Update="Mocks\Responses\starship.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Mocks\Responses\starships.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Mocks\Responses\vehicle.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Mocks\Responses\vehicles.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -4,7 +4,6 @@ using NUnit.Framework;
 using StarWars.Command;
 using StarWars.Dto;
 using StarWars.Factory;
-using StarWars.Repositories;
 using StarWars.Specification.Mocks;
 using StarWars.SwApiClient;
 using System.IO;
@@ -18,6 +17,7 @@ namespace StarWars.Specification.Command
         [SetUp]
         public void Setup()
         {
+            Directory.CreateDirectory("results");
             RemoveResultFiles();
         }
 
@@ -27,7 +27,7 @@ namespace StarWars.Specification.Command
             RemoveResultFiles();
         }
 
-        private void RemoveResultFiles()
+        private static void RemoveResultFiles()
         {
             foreach (var file in Directory.GetFiles("results"))
             {

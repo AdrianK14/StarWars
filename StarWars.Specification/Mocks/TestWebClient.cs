@@ -11,19 +11,24 @@ namespace StarWars.Specification.Mocks
         {
             { "/people/", "people.json"},
             { "/people/1/", "person.json"},
+            { "/films/", "films.json"},
             { "/films/1/", "film.json"},
             { "/films/2/", "film.json"},
             { "/films/3/", "film.json"},
             { "/films/6/", "film.json"},
+            { "/vehicles/", "vehicles.json"},
+            { "/vehicles/4/", "vehicle.json"},
             { "/vehicles/14/", "vehicle.json"},
             { "/vehicles/30/", "vehicle.json"},
+            { "/starships/", "starships.json"},
+            { "/starships/2/", "starship.json"},
             { "/starships/12/", "starship.json"},
             { "/starships/22/", "starship.json"}
         };
 
         public string SendRequest(string url)
         {
-            return File.ReadAllText($"Mocks/Responses/{_responses[_responses.Keys.First(x => url.EndsWith(x))]}");
+            return File.ReadAllText($"Mocks/Responses/{_responses[_responses.Keys.First(url.EndsWith)]}");
         }
     }
 }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Ini;
-using NSubstitute.Core.Arguments;
 using NUnit.Framework;
-using StarWars.Contracts.Repositories;
 using StarWars.Repositories;
 using StarWars.Specification.Mocks;
 using static TddXt.AnyRoot.Root;
@@ -30,6 +23,14 @@ namespace StarWars.Specification.Repositories
 
             //Assert
             luke.Name.Should().Be("Luke Skywalker");
+            luke.Height.Should().Be("172");
+            luke.Mass.Should().Be("77");
+            luke.BirthYear.Should().Be("19BBY");
+            luke.EyeColor.Should().Be("blue");
+            luke.SkinColor.Should().Be("fair");
+            luke.HairColor.Should().Be("blond");
+            luke.Gender.Should().Be("male");
+            luke.Homeworld.Should().Be("https://swapi.dev/api/planets/1/");
         }
 
         [Test]
