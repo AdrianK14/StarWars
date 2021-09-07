@@ -1,21 +1,23 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using StarWars.Entities;
 using StarWars.Repositories;
 using StarWars.Specification.Mocks;
 using static TddXt.AnyRoot.Root;
 
 namespace StarWars.Specification.Repositories
 {
-    public class filmsRepositorySpecification
+    public class FilmsRepositorySpecification
     {
         [Test]
         public void Should_find_A_new_hope_by_id()
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var filmsRepo = new FilmsRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var filmsRepo = new FilmsRepository(Any.Instance<ILogger<Film>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var film = filmsRepo.GetById(1);
@@ -29,7 +31,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var filmsRepo = new FilmsRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var filmsRepo = new FilmsRepository(Any.Instance<ILogger<Film>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = filmsRepo.GetByUrl("https://swapi.dev/api/films/1/");
@@ -43,7 +45,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var filmsRepo = new FilmsRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var filmsRepo = new FilmsRepository(Any.Instance<ILogger<Film>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var heroes = filmsRepo.GetAll();

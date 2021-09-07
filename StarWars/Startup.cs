@@ -5,8 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StarWars.Contracts.Factory;
+using StarWars.Contracts.Repositories;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Factory;
+using StarWars.Repositories;
 using StarWars.SwApiClient;
 
 namespace StarWars
@@ -22,6 +24,10 @@ namespace StarWars
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IPeopleRepository, PeopleRepository>();
+            services.AddTransient<IFilmsRepository, FilmsRepository>();
+            services.AddTransient<IStarshipsRepository, StarshipsRepository>();
+            services.AddTransient<IVehiclesRepository, VehiclesRepository>();
             services.AddTransient<IStarWarsApiClient, StarWarsApiClient>();
             services.AddTransient<IPersonInfoDtoFactory, PersonInfoDtoFactory>();
             services.AddTransient<IWebClient, WebClient>();

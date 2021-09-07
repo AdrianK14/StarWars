@@ -1,6 +1,8 @@
 ﻿using StarWars.Attributes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using StarWars.Contracts.Dto;
+using StarWars.Dto;
 
 namespace StarWars.Entities
 {
@@ -51,5 +53,18 @@ namespace StarWars.Entities
 
         [JsonPropertyName("films")]
         public List<string> Films { get; set; }
+
+        public StarshipDto ToDto()
+        {
+            return new StarshipDto()
+            {
+                Name = Name,
+                Manufacturer = Manufacturer,
+                Model = Model,
+                Passengers = Passengers,
+                Crew = Crew,
+                Length = Length
+            };
+        }
     }
 }

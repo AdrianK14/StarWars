@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using StarWars.Entities;
 using StarWars.Repositories;
 using StarWars.Specification.Mocks;
 using static TddXt.AnyRoot.Root;
@@ -15,7 +17,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var peopleRepo = new VehiclesRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var peopleRepo = new VehiclesRepository(Any.Instance<ILogger<Vehicle>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = peopleRepo.GetById(4);
@@ -29,7 +31,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var peopleRepo = new VehiclesRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var peopleRepo = new VehiclesRepository(Any.Instance<ILogger<Vehicle>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = peopleRepo.GetByUrl("https://swapi.dev/api/vehicles/4/");
@@ -43,7 +45,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var peopleRepo = new VehiclesRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var peopleRepo = new VehiclesRepository(Any.Instance<ILogger<Vehicle>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var heroes = peopleRepo.GetAll();

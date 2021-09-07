@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using StarWars.Entities;
 using StarWars.Repositories;
 using StarWars.Specification.Mocks;
 using static TddXt.AnyRoot.Root;
@@ -15,7 +17,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var starshipsRepo = new StarshipsRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var starshipsRepo = new StarshipsRepository(Any.Instance<ILogger<Starship>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = starshipsRepo.GetById(2);
@@ -29,7 +31,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var starshipsRepo = new StarshipsRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var starshipsRepo = new StarshipsRepository(Any.Instance<ILogger<Starship>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = starshipsRepo.GetByUrl("https://swapi.dev/api/starships/2/");
@@ -43,7 +45,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var starshipsRepo = new StarshipsRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var starshipsRepo = new StarshipsRepository(Any.Instance<ILogger<Starship>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var heroes = starshipsRepo.GetAll();

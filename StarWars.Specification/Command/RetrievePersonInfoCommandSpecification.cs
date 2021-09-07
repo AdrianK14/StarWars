@@ -9,6 +9,8 @@ using StarWars.Specification.Mocks;
 using StarWars.SwApiClient;
 using System.IO;
 using System.Text.Json;
+using StarWars.Entities;
+using StarWars.Repositories;
 using static TddXt.AnyRoot.Root;
 
 namespace StarWars.Specification.Command
@@ -40,9 +42,13 @@ namespace StarWars.Specification.Command
         public void Should_return_Luke_Skywalker_info_dto()
         {
             //Arrange
-            var testWebClient = new TestWebClient();
+            var webClient = new TestWebClient();
             var configuration = Any.Instance<IConfiguration>();
-            var apiClient = new StarWarsApiClient(configuration, testWebClient);
+            var peopleRepo = new PeopleRepository(Any.Instance<ILogger<Person>>(), configuration, webClient);
+            var vehiclesRepo = new VehiclesRepository(Any.Instance<ILogger<Vehicle>>(), configuration, webClient);
+            var starshipsRepo = new StarshipsRepository(Any.Instance<ILogger<Starship>>(), configuration, webClient);
+            var filmsRepo = new FilmsRepository(Any.Instance<ILogger<Film>>(), configuration, webClient);
+            var apiClient = new StarWarsApiClient(peopleRepo, filmsRepo, starshipsRepo, vehiclesRepo);
             var personInfoDtoFactory = new PersonInfoDtoFactory(Any.Instance<ILogger<PersonInfoDtoFactory>>(), apiClient);
             var retrieveInfoCommand = new RetrievePersonInfoCommand(personInfoDtoFactory, "Luke Skywalker", "results");
 
@@ -53,17 +59,21 @@ namespace StarWars.Specification.Command
             dto.Should().NotBeNull();
             dto.Should().BeOfType(typeof(PersonInfoDto));
             dto.Films.Count.Should().Be(4);
-            dto.Vehicles.Count.Should().Be(1);
-            dto.Starships.Count.Should().Be(1);
+            dto.Vehicles.Count.Should().Be(2);
+            dto.Starships.Count.Should().Be(2);
         }
 
         [Test]
         public void Should_save_valid_json_to_file()
         {
             //Arrange
-            var testWebClient = new TestWebClient();
+            var webClient = new TestWebClient();
             var configuration = Any.Instance<IConfiguration>();
-            var apiClient = new StarWarsApiClient(configuration, testWebClient);
+            var peopleRepo = new PeopleRepository(Any.Instance<ILogger<Person>>(), configuration, webClient);
+            var vehiclesRepo = new VehiclesRepository(Any.Instance<ILogger<Vehicle>>(), configuration, webClient);
+            var starshipsRepo = new StarshipsRepository(Any.Instance<ILogger<Starship>>(), configuration, webClient);
+            var filmsRepo = new FilmsRepository(Any.Instance<ILogger<Film>>(), configuration, webClient);
+            var apiClient = new StarWarsApiClient(peopleRepo, filmsRepo, starshipsRepo, vehiclesRepo);
             var personInfoDtoFactory = new PersonInfoDtoFactory(Any.Instance<ILogger<PersonInfoDtoFactory>>(), apiClient);
             var retrieveInfoCommand = new RetrievePersonInfoCommand(personInfoDtoFactory, "Luke Skywalker", "results");
 

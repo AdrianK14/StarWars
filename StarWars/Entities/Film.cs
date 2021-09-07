@@ -1,6 +1,8 @@
 ﻿using StarWars.Attributes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using StarWars.Contracts.Dto;
+using StarWars.Dto;
 
 namespace StarWars.Entities
 {
@@ -40,5 +42,16 @@ namespace StarWars.Entities
         [JsonPropertyName("species")]
         public List<string> Species { get; set; }
 
+        public FilmDto ToDto()
+        {
+            return new FilmDto()
+            {
+                Title = Title,
+                Director = Director,
+                EpisodeId = EpisodeId,
+                Producer = Producer,
+                ReleaseDate = ReleaseDate
+            };
+        }
     }
 }

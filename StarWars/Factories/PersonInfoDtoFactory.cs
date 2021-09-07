@@ -30,17 +30,17 @@ namespace StarWars.Factory
             {
                 foreach (var filmUrl in person.Films)
                 {
-                    personInfoDto.Films.Add(_starWarsApiClient.Films.GetByUrl(filmUrl));
+                    personInfoDto.Films.Add(_starWarsApiClient.Films.GetByUrl(filmUrl).ToDto());
                 }
 
                 foreach (var vehicleUrl in person.Vehicles)
                 {
-                    personInfoDto.Vehicles.Add(_starWarsApiClient.Vehicles.GetByUrl(vehicleUrl));
+                    personInfoDto.Vehicles.Add(_starWarsApiClient.Vehicles.GetByUrl(vehicleUrl).ToDto());
                 }
 
                 foreach (var starshipUrl in person.Starships)
                 {
-                    personInfoDto.Starships.Add(_starWarsApiClient.Starships.GetByUrl(starshipUrl));
+                    personInfoDto.Starships.Add(_starWarsApiClient.Starships.GetByUrl(starshipUrl).ToDto());
                 }
             }
             sw.Stop();

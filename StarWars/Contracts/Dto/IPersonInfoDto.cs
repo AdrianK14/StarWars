@@ -1,12 +1,13 @@
 ﻿using StarWars.Entities;
 using System.Collections.Generic;
+using StarWars.Dto;
 
 namespace StarWars.Contracts.Dto
 {
     public interface IPersonInfoDto
     {
-        IList<Film> Films { get; set; }
-        IList<Starship> Starships { get; set; }
-        IList<Vehicle> Vehicles { get; set; }
+        IList<FilmDto> Films { get; set; }
+        IList<StarshipDto> Starships { get; set; }
+        IList<VehicleDto> Vehicles { get; set; }
     }
 }

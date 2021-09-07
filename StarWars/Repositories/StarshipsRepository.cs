@@ -3,12 +3,13 @@ using StarWars.Contracts.Repositories;
 using StarWars.Contracts.SwApiClient;
 using StarWars.Entities;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace StarWars.Repositories
 {
     public class StarshipsRepository : StarWarsRepository<Starship>, IStarshipsRepository
     {
-        public StarshipsRepository(IConfiguration configuration, IWebClient webClient) : base(configuration, webClient) { }
+        public StarshipsRepository(ILogger<Starship> logger, IConfiguration configuration, IWebClient webClient) : base(logger, configuration, webClient) { }
 
         public List<Starship> GetAll()
         {

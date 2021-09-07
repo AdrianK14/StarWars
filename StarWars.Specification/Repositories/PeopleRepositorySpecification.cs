@@ -1,7 +1,10 @@
 ﻿using System.Linq;
+using Castle.Core.Logging;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using StarWars.Entities;
 using StarWars.Repositories;
 using StarWars.Specification.Mocks;
 using static TddXt.AnyRoot.Root;
@@ -16,7 +19,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var peopleRepo = new PeopleRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var peopleRepo = new PeopleRepository(Any.Instance<ILogger<Person>>(),Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = peopleRepo.GetById(1);
@@ -38,7 +41,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var peopleRepo = new PeopleRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var peopleRepo = new PeopleRepository(Any.Instance<ILogger<Person>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var luke = peopleRepo.GetByUrl("https://swapi.dev/api/people/1/");
@@ -52,7 +55,7 @@ namespace StarWars.Specification.Repositories
         {
             //Arrange
             var testWebClient = new TestWebClient();
-            var peopleRepo = new PeopleRepository(Any.Instance<IConfiguration>(), testWebClient);
+            var peopleRepo = new PeopleRepository(Any.Instance<ILogger<Person>>(), Any.Instance<IConfiguration>(), testWebClient);
 
             //Act
             var heroes = peopleRepo.GetAll();

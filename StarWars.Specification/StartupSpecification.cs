@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using StarWars.Contracts.Factory;
 using StarWars.Contracts.SwApiClient;
+using StarWars.Entities;
 using StarWars.Factory;
 using StarWars.SwApiClient;
 using static TddXt.AnyRoot.Root;
@@ -27,6 +28,10 @@ namespace StarWars.Specification
 
             services.AddSingleton(logger);
             services.AddSingleton(configuration);
+            services.AddSingleton(Any.Instance<ILogger<Person>>());
+            services.AddSingleton(Any.Instance<ILogger<Starship>>());
+            services.AddSingleton(Any.Instance<ILogger<Vehicle>>());
+            services.AddSingleton(Any.Instance<ILogger<Film>>());
             services.AddTransient<IStarWarsApiClient, StarWarsApiClient>();
             services.AddTransient<IPersonInfoDtoFactory, PersonInfoDtoFactory>();
             services.AddTransient<IWebClient, WebClient>();
