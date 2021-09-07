@@ -11,7 +11,7 @@ using System.Text.Json;
 
 namespace StarWars.Repositories
 {
-    public class StarWarsRepository<TEntity> where TEntity : StarWarsEntity
+    public abstract class StarWarsRepository<TEntity> where TEntity : StarWarsEntity
     {
         private readonly string _apiUrl;
         private readonly string _apiResource;

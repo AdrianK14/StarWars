@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace StarWars.Entities
 {
-    public class StarWarsEntity
+    public abstract class StarWarsEntity
     {
         [JsonPropertyName("url")]
         public string Url { get; set; }
